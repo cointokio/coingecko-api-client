@@ -38,14 +38,19 @@ $client = new Cointokio\CoinGecko\Client();
  *
  * @see https://www.coingecko.com/api/documentations/v3#/coins/get_coins_markets
  *
- * Note that the $client->coins() method is actually an instance of the
- * \Cointokio\CoinGecko\Coins class.
+ * Note that the $client->coins() method returns an instance of the
+ * \Cointokio\CoinGecko\Coins class. This allows us to use the Coins class methods
+ * more easily via method chaining, eg.:
+ *
+ * $client->coins()->get_list()
+ * $client->coins()->get_markets()
  *
  * @see https://github.com/cointokio/coingecko-api-client/blob/main/class-client.php#L41
  * @see https://github.com/cointokio/coingecko-api-client/blob/main/classes/class-coins.php
+ * @see https://en.wikipedia.org/wiki/Method_chaining
  */
- $response = $client->coins()->get_markets(
- 	'eur',
- 	array( 'ids' => 'btc, eth' )
- );
+$response = $client->coins()->get_markets(
+	'eur',
+	array( 'ids' => 'btc, eth' )
+);
 ```
