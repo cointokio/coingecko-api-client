@@ -37,6 +37,12 @@ $client = new Cointokio\CoinGecko\Client();
  * Get a list of price, market cap, volume and market-related data.
  *
  * @see https://www.coingecko.com/api/documentations/v3#/coins/get_coins_markets
+ *
+ * Note that the $client->coins() method is actually an instance of the
+ * \Cointokio\CoinGecko\Coins class.
+ *
+ * @see https://github.com/cointokio/coingecko-api-client/blob/main/class-client.php#L41
+ * @see https://github.com/cointokio/coingecko-api-client/blob/main/classes/class-coins.php
  */
  $response = $client->coins()->get_markets(
  	'eur',
