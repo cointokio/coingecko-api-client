@@ -1,0 +1,23 @@
+{
+    "name": "cointokio/coingecko-api-client",
+    "description": "Fetch data from the CoinGecko API, intended for use in WordPress plugins or themes.",
+    "keywords": ["api", "client", "coingecko", "coingecko.com", "php", "wordpress"],
+    "homepage": "https://github.com/cointokio/coingecko-api-client",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Cointokio",
+            "email": "info@cointokio.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Barry Ceelen",
+            "email": "b@rryceelen.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/cointokio/coingecko-api-client/issues?state=open",
+        "source": "https://github.com/cointokio/coingecko-api-client"
+    }
+}
