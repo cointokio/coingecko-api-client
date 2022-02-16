@@ -19,5 +19,11 @@
     "support": {
         "issues": "https://github.com/cointokio/coingecko-api-client/issues?state=open",
         "source": "https://github.com/cointokio/coingecko-api-client"
+    },
+    "require-dev": {
+        "automattic/vipwpcs": "*"
+    },
+    "scripts": {
+        "lint": "phpcs --standard=phpcs.ruleset.xml"
     }
 }
