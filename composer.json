@@ -21,9 +21,22 @@
         "source": "https://github.com/cointokio/coingecko-api-client"
     },
     "require-dev": {
-        "automattic/vipwpcs": "*"
+        "automattic/vipwpcs": "*",
+        "brainmaestro/composer-git-hooks": "^2.8"
     },
     "scripts": {
-        "lint": "phpcs --standard=phpcs.ruleset.xml"
+        "lint": "phpcs --standard=phpcs.ruleset.xml",
+        "post-install-cmd": "cghooks add --ignore-lock",
+        "post-update-cmd": "cghooks update"
+    },
+    "extra": {
+        "hooks": {
+            "config": {
+                "stop-on-failure": ["pre-commit"]
+            },
+            "pre-commit": [
+                "composer run lint"
+            ]
+        }
     }
 }
