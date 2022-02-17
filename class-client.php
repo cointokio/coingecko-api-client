@@ -28,6 +28,20 @@ class Client {
 	}
 
 	/**
+	 * Get an instance of the AssetPlatforms class.
+	 *
+	 * @return AssetPlatforms
+	 */
+	public function asset_platforms() {
+
+		if ( ! class_exists( '\Cointokio\CoinGecko\AssetPlatforms' ) ) {
+			require_once dirname( __FILE__ ) . '/classes/class-assetplatforms.php';
+		}
+
+		return new AssetPlatforms();
+	}
+
+	/**
 	 * Get an instance of the Coins class.
 	 *
 	 * @return Coins
