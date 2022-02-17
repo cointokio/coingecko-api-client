@@ -70,20 +70,6 @@ class Client {
 	}
 
 	/**
-	 * Get an instance of the Events class.
-	 *
-	 * @return Events
-	 */
-	public function events() {
-
-		if ( ! class_exists( '\Cointokio\CoinGecko\Events' ) ) {
-			require_once dirname( __FILE__ ) . '/classes/class-events.php';
-		}
-
-		return new Events();
-	}
-
-	/**
 	 * Get an instance of the Exchanges class.
 	 *
 	 * @return Exchanges
