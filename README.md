@@ -57,4 +57,4 @@ $response = $client->coins()->get_markets(
 
 ## Coding Standards
 
-This project aims to adhere to the [VIP Coding Standards](https://github.com/Automattic/VIP-Coding-Standards). Run `composer run lint` in the project root folder to check for coding standards voilations. A pre-commit hook is in place that runs the lint command when committing code.
+This project aims to adhere to the [VIP Coding Standards](https://github.com/Automattic/VIP-Coding-Standards).
