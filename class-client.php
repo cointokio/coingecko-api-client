@@ -42,6 +42,20 @@ class Client {
 	}
 
 	/**
+	 * Get an instance of the Categories class.
+	 *
+	 * @return Coins
+	 */
+	public function categories() {
+
+		if ( ! class_exists( '\Cointokio\CoinGecko\Categories' ) ) {
+			require_once dirname( __FILE__ ) . '/classes/class-categories.php';
+		}
+
+		return new Categories();
+	}
+
+	/**
 	 * Get an instance of the Coins class.
 	 *
 	 * @return Coins
