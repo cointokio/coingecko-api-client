@@ -106,7 +106,7 @@ class Client {
 	public function exchange_rates() {
 
 		if ( ! class_exists( '\Cointokio\CoinGecko\ExchangeRates' ) ) {
-			require_once dirname( __FILE__ ) . '/classes/class-exchange-rates.php';
+			require_once dirname( __FILE__ ) . '/classes/class-exchangerates.php';
 		}
 
 		return new ExchangeRates();
@@ -190,7 +190,7 @@ class Client {
 	public function status_updates() {
 
 		if ( ! class_exists( '\Cointokio\CoinGecko\StatusUpdates' ) ) {
-			require_once dirname( __FILE__ ) . '/classes/class-status-updates.php';
+			require_once dirname( __FILE__ ) . '/classes/class-statusupdates.php';
 		}
 
 		return new StatusUpdates();

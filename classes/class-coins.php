@@ -38,7 +38,7 @@ class Coins extends Request {
 	 *
 	 * @param string $vs_currency The target currency of market data (usd, eur, jpy, etc.).
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $ids                     Comma-separated list of crytocurrency symbols.
 	 *                                           @see get_coins_list().
@@ -77,7 +77,7 @@ class Coins extends Request {
 	 *
 	 * @param string $id     The coin id (can be obtained from /coins) eg. bitcoin.
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $localization   Include all localized languages in
 	 *                                  response (true/false). Default 'true'.
@@ -103,9 +103,9 @@ class Coins extends Request {
 	 *   exchange for a while.
 	 * - Ticker is_anomaly is true if ticker's price is outliered by our system.
 	 *
-	 * @param string $id     The coin id (can be obtained from /coins/list) eg. bitcoin
+	 * @param string $id The coin id (can be obtained from /coins/list) eg. bitcoin.
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string exchange_ids          Filter results by exchange_ids (ref: v3/exchanges/list)
 	 *     @type string include_exchange_logo Flag to show exchange_logo.
@@ -129,7 +129,7 @@ class Coins extends Request {
 	 * @param string $id    The coin id (can be obtained from /coins) eg. bitcoin.
 	 * @param string $date  The date of data snapshot in dd-mm-yyyy eg. 30-12-2017.
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $localization Set to false to exclude localized languages in response.
 	 * }
@@ -200,7 +200,7 @@ class Coins extends Request {
 	 *
 	 * @param string $id The coin id (can be obtained from /coins) eg. bitcoin.
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type int $per_page Total results per page.
 	 *     @type int $page     Page through results.

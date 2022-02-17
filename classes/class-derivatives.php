@@ -20,7 +20,7 @@ class Derivatives extends Request {
 	 * @see https://www.coingecko.com/api/documentations/v3#/derivatives/get_derivatives
 	 *
 	 * @param array $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string include_tickers 'expired' to show unexpired tickers, 'all'
 	 *                                  to list all tickers, defaults to unexpired.
@@ -38,7 +38,7 @@ class Derivatives extends Request {
 	 * @see https://www.coingecko.com/api/documentations/v3#/derivatives/get_derivatives_exchanges
 	 *
 	 * @param array $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $order    Order results using following params name_asc，name_desc
 	 *                            open_interest_btc_asc，open_interest_btc_desc
@@ -61,7 +61,7 @@ class Derivatives extends Request {
 	 * @param string $id     The exchange id (can be obtained from derivatives/exchanges/list)
 	 *                       eg. 'bitmex'.
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string include_tickers 'expired' to show unexpired tickers, 'all'
 	 *                                  to list all tickers, leave blank to omit

@@ -20,7 +20,7 @@ class Finance extends Request {
 	 * @see https://www.coingecko.com/api/documentations/v3#/finance/get_finance_platforms
 	 *
 	 * @param array $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type int    $per_page Total results per page.
 	 *     @type string $page     Page of results (paginated to 100 by default).
@@ -38,7 +38,7 @@ class Finance extends Request {
 	 * @see https://www.coingecko.com/api/documentations/v3#/finance/get_finance_products
 	 *
 	 * @param array $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type int    $per_page Total results per page.
 	 *     @type string $page     Page of results (paginated to 100 by default).

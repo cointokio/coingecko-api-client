@@ -25,7 +25,7 @@ class StatusUpdates extends Request {
 	 * @see https://www.coingecko.com/api/documentations/v3#/status_updates/get_status_updates
 	 *
 	 * @param array $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $category     Filtered by category (eg. general, milestone,
 	 *                                partnership, exchange_listing, software_release,

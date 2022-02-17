@@ -20,7 +20,7 @@ class Indexes extends Request {
 	 * @see https://www.coingecko.com/api/documentations/v3#/indexes/get_indexes
 	 *
 	 * @param array $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type int $per_page Total results per page.
 	 *     @type int $page     Page of results (paginated to 100 by default).

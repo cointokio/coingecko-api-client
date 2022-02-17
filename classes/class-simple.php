@@ -25,7 +25,7 @@ class Simple extends Request {
 	 *                              querying more than 1 vs_currency.
 	 *                              @see get_supported_vs_currencies()
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $include_market_cap      Include market_cap, default: false.
 	 *     @type string $include_24hr_vol        Include 24hr_vol, default: false.
@@ -54,7 +54,7 @@ class Simple extends Request {
 	 *                                   querying more than 1 vs_currency.
 	 *                                   @see get_supported_vs_currencies()
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $include_market_cap      Include market_cap, default: false.
 	 *     @type string $include_24hr_vol        Include 24hr_vol, default: false.

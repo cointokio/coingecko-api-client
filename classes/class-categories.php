@@ -33,7 +33,7 @@ class Categories extends Request {
 	 *
 	 * @param string $order Sort results by field. market_cap_desc (default), market_cap_asc,
 	 *                      name_desc, name_asc, market_cap_change_24h_desc and
-	 *                      market_cap_change_24h_asc
+	 *                      market_cap_change_24h_asc.
 	 * @return array|\WP_Error
 	 */
 	public function get_categories( $order = 'market_cap_desc' ) {

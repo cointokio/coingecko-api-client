@@ -20,7 +20,7 @@ class Exchanges extends Request {
 	 * @see https://www.coingecko.com/api/documentations/v3#/exchanges/get_exchanges
 	 *
 	 * @param array $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type int $per_page Total results per page. Valid values: 1...250.
 	 *                         Default value: 100.
@@ -77,7 +77,7 @@ class Exchanges extends Request {
 	 *
 	 * @param string $id The exchange id (can be obtained from /exchanges/list) eg. 'binance'.
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type string $coin_ids              Filter tickers by coin_ids.
 	 *     @type string $include_exchange_logo Flag to show exchange logo.
@@ -101,7 +101,7 @@ class Exchanges extends Request {
 	 *
 	 * @param string $id The exchange id (can be obtained from /exchanges/list) eg. 'binance'.
 	 * @param array  $args {
-	 *     Optional request arguments:
+	 *     Optional request arguments.
 	 *
 	 *     @type int    $per_page     Total results per page.
 	 *     @type int    $page         Page through results.
