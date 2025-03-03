@@ -12,15 +12,25 @@ namespace Cointokio\CoinGecko;
  *
  * Example:
  *
- * $coingecko_client = new \Cointokio\CoinGecko\Client();
+ * $coingecko_client = new \Cointokio\CoinGecko\Client( 'your-api-key' );
  * $response         = $coingecko_client->coins()->get_list();
  */
 class Client {
 
 	/**
-	 * Initialize Client class.
+	 * CoinGecko API key.
+	 *
+	 * @var string
 	 */
-	public function __construct() {
+	private $api_key = '';
+
+	/**
+	 * Initialize Client class.
+	 *
+	 * @param string $api_key CoinGecko API key.
+	 */
+	public function __construct( $api_key = '' ) {
+		$this->api_key = $api_key;
 
 		if ( ! class_exists( '\Cointokio\CoinGecko\Request' ) ) {
 			require_once dirname( __FILE__ ) . '/classes/class-request.php';
@@ -38,7 +48,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-assetplatforms.php';
 		}
 
-		return new AssetPlatforms();
+		return new AssetPlatforms( $this->api_key );
 	}
 
 	/**
@@ -52,7 +62,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-categories.php';
 		}
 
-		return new Categories();
+		return new Categories( $this->api_key );
 	}
 
 	/**
@@ -66,7 +76,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-coins.php';
 		}
 
-		return new Coins();
+		return new Coins( $this->api_key );
 	}
 
 	/**
@@ -80,7 +90,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-contract.php';
 		}
 
-		return new Contract();
+		return new Contract( $this->api_key );
 	}
 
 	/**
@@ -94,7 +104,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-derivatives.php';
 		}
 
-		return new Derivatives();
+		return new Derivatives( $this->api_key );
 	}
 
 	/**
@@ -108,7 +118,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-exchanges.php';
 		}
 
-		return new Exchanges();
+		return new Exchanges( $this->api_key );
 	}
 
 
@@ -123,7 +133,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-exchangerates.php';
 		}
 
-		return new ExchangeRates();
+		return new ExchangeRates( $this->api_key );
 	}
 
 	/**
@@ -137,7 +147,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-finance.php';
 		}
 
-		return new Finance();
+		return new Finance( $this->api_key );
 	}
 
 	/**
@@ -151,7 +161,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-globals.php';
 		}
 
-		return new Globals();
+		return new Globals( $this->api_key );
 	}
 
 	/**
@@ -165,7 +175,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-indexes.php';
 		}
 
-		return new Indexes();
+		return new Indexes( $this->api_key );
 	}
 
 	/**
@@ -179,7 +189,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-ping.php';
 		}
 
-		return ( new Ping() )->get_ping();
+		return ( new Ping( $this->api_key ) )->get_ping();
 	}
 
 	/**
@@ -193,7 +203,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-simple.php';
 		}
 
-		return new Simple();
+		return new Simple( $this->api_key );
 	}
 
 	/**
@@ -207,7 +217,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-statusupdates.php';
 		}
 
-		return new StatusUpdates();
+		return new StatusUpdates( $this->api_key );
 	}
 
 	/**
@@ -221,6 +231,6 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-trending.php';
 		}
 
-		return new Trending();
+		return new Trending( $this->api_key );
 	}
 }

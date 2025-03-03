@@ -8,14 +8,20 @@ This package is [available on packagist.org](https://packagist.org/packages/coin
 
 `composer require cointokio/coingecko-api-client`
 
-## Usage
+## Use
 
-Include the main `class-client.php` file and create an instance of the `Client` class and use its methods to fetch data from the CoinGecko API. Each method represents a separate API endpoint and will either return a list of response data or a [WP_Error](https://developer.wordpress.org/reference/classes/wp_error/) object.
+Include the main `class-client.php` file and create an instance of the `Client` class and use its methods to fetch data from the CoinGecko API. Each method represents a separate API endpoint and will either return a list of response data or a [WP_Error](https://developer.wordpress.org/reference/classes/wp_error/) object. Note that access to the CoinGecko API requires an API key.
 
 ```
 require_once '/your/cool/path/to/coingecko-client/class-client.php';
 
-$client = new Cointokio\CoinGecko\Client();
+/*
+ * There are two ways the Client class can use your coingecko API key:
+ *
+ * - Pass the API key to the Client class directly like in the example below.
+ * - Define a global COINGECKO_API_KEY variable.
+ */
+$client = new Cointokio\CoinGecko\Client( 'your-api-key' );
 
 /*
  * Use the ping() method to check the CoinGecko API status.
@@ -25,13 +31,12 @@ $client = new Cointokio\CoinGecko\Client();
 $response = $client->ping();
 ```
 
-The following example uses the `$client->coins()->get_markets()` method to fetch data from CoinGecko's `/coins/markets` endpoint:
-
+The following example uses the `$client->coins()->get_markets()` method to fetch data from CoinGecko's `/coins/markets` endpoint. Note that access to the CoinGecko API requires an API key.
 
 ```
 require_once '/your/cool/path/to/coingecko-client/class-client.php';
 
-$client = new Cointokio\CoinGecko\Client();
+$client  = new Cointokio\CoinGecko\Client( 'your-api-key' );
 
 /*
  * Get a list of price, market cap, volume and market-related data.

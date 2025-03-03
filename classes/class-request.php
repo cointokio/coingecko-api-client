@@ -17,7 +17,28 @@ class Request {
 	/**
 	 * CoinGecko API base URL.
 	 */
-	const ENDPOINT = 'https://api.coingecko.com/api/v3';
+	const ENDPOINT = 'https://pro-api.coingecko.com/api/v3';
+
+	/**
+	 * CoinGecko API key.
+	 *
+	 * @var string
+	 */
+	private $api_key = '';
+
+	/**
+	 * Constructor.
+	 *
+	 * @param string $api_key CoinGecko API key.
+	 */
+	public function __construct( $api_key = '' ) {
+
+		if ( empty( $api_key ) && defined( 'COINGECKO_API_KEY' ) ) {
+			$api_key = COINGECKO_API_KEY;
+		}
+
+		$this->api_key = $api_key;
+	}
 
 	/**
 	 * Performs an HTTP request using the GET method and returns its response body as an array.
@@ -29,6 +50,15 @@ class Request {
 	public function get( $path, $args = [] ) {
 
 		$url = add_query_arg( $args, $this::ENDPOINT . $path );
+
+		// Create headers array with API key if provided
+		$headers = array(
+			'accept' => 'application/json',
+		);
+
+		if ( ! empty( $this->api_key ) ) {
+			$headers['x-cg-pro-api-key'] = $this->api_key;
+		}
 
 		/*
 		 * Use the vip_safe_wp_remote_get() in case we're on the VIP platform.
@@ -43,9 +73,7 @@ class Request {
 				1,
 				20,
 				array(
-					'headers' => array(
-						'accept: application/json',
-					),
+					'headers' => $headers,
 				)
 			);
 		} else {
@@ -53,9 +81,7 @@ class Request {
 			$response = wp_remote_get(
 				$url,
 				array(
-					'headers' => array(
-						'accept: application/json',
-					),
+					'headers' => $headers,
 				)
 			);
 		}
