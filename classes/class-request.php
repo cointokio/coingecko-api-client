@@ -51,7 +51,7 @@ class Request {
 
 		$url = add_query_arg( $args, $this::ENDPOINT . $path );
 
-		// Create headers array with API key if provided
+		// Create headers array with API key if provided.
 		$headers = array(
 			'accept' => 'application/json',
 		);
@@ -77,11 +77,12 @@ class Request {
 				)
 			);
 		} else {
-			// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get
+			// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_remote_get_wp_remote_get -- Non-VIP environments use core HTTP API.
 			$response = wp_remote_get(
 				$url,
 				array(
 					'headers' => $headers,
+					// phpcs:ignore WordPressVIPMinimum.Performance.RemoteRequestTimeout.timeout_timeout -- Align with vip_safe_wp_remote_get maximum (20s).
 					'timeout' => 20,
 				)
 			);

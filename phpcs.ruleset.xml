@@ -6,16 +6,23 @@
 	<file>.</file>
 	<rule ref="WordPress">
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+	</rule>
+	<!-- PHPCS Extra (via VIPCS): keep dirname( __FILE__ ) path pattern used across this package. -->
+	<rule ref="Modernize.FunctionCalls.Dirname.FileConstant">
+		<severity>0</severity>
 	</rule>
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
-			<property name="prefixes" type="array" value="cointokio_coingecko"/>
+			<property name="prefixes" type="array">
+				<element value="cointokio_coingecko"/>
+			</property>
 		</properties>
 	</rule>
 	<rule ref="WordPressVIPMinimum" />
 	<rule ref="WordPress.WP.DeprecatedFunctions">
 		<properties>
-			<property name="minimum_supported_version" value="2.7.0" />
+			<property name="minimum_wp_version" value="2.7.0"/>
 		</properties>
 	</rule>
 	<exclude-pattern>vendor/</exclude-pattern>
