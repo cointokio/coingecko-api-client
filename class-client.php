@@ -80,6 +80,20 @@ class Client {
 	}
 
 	/**
+	 * Get an instance of the Companies class.
+	 *
+	 * @return Companies
+	 */
+	public function companies() {
+
+		if ( ! class_exists( '\Cointokio\CoinGecko\Companies' ) ) {
+			require_once dirname( __FILE__ ) . '/classes/class-companies.php';
+		}
+
+		return new Companies( $this->api_key );
+	}
+
+	/**
 	 * Get an instance of the Contract class.
 	 *
 	 * @return Contract
