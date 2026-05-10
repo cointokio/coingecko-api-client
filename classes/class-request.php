@@ -44,7 +44,7 @@ class Request {
 	 * Performs an HTTP request using the GET method and returns its response body as an array.
 	 *
 	 * @param string $path Path to retrieve.
-	 * @param string $args Request arguments.
+	 * @param array  $args Request arguments.
 	 * @return array|\WP_Error The response body as an array or WP_Error on failure.
 	 */
 	public function get( $path, $args = [] ) {
@@ -82,6 +82,7 @@ class Request {
 				$url,
 				array(
 					'headers' => $headers,
+					'timeout' => 20,
 				)
 			);
 		}
@@ -117,13 +118,14 @@ class Request {
 			);
 		}
 
-		$header = wp_remote_retrieve_header( $response, 'content-type' );
+		$content_type = wp_remote_retrieve_header( $response, 'content-type' );
+		$is_json      = is_string( $content_type ) && 0 === stripos( $content_type, 'application/json' );
 
-		if ( 0 !== strpos( $header, 'application/json;' ) ) {
+		if ( ! $is_json ) {
 
 			return new \WP_Error(
 				'coingecko_api_response_invalid',
-				'The CoinGecko API reponse did not return JSON'
+				'The CoinGecko API response did not return JSON'
 			);
 		}
 
@@ -143,7 +145,7 @@ class Request {
 
 			return new \WP_Error(
 				'coingecko_api_response_json',
-				'Unable to decode JSON: ' . json_last_error()
+				'Unable to decode JSON: ' . json_last_error_msg()
 			);
 		}
 
@@ -151,7 +153,7 @@ class Request {
 	}
 
 	/**
-	 * Get the reponse error message.
+	 * Get the response error message.
 	 *
 	 * @param array $response The response of a request performed via wp_remote_get().
 	 * @return string Response message or error message from response body.
