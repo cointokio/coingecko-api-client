@@ -54,7 +54,7 @@ class Client {
 	/**
 	 * Get an instance of the Categories class.
 	 *
-	 * @return Coins
+	 * @return Categories
 	 */
 	public function categories() {
 
