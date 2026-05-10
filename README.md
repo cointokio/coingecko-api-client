@@ -4,7 +4,7 @@ A PHP client for fetching data from the [CoinGecko API](https://www.coingecko.co
 
 ## Installation
 
-This package is [available on packagist.org](https://packagist.org/packages/cointokio/coingecko-api-client) can be added as a dependency to your project via [Composer](https://getcomposer.org).
+This package is [available on packagist.org](https://packagist.org/packages/cointokio/coingecko-api-client) and can be added as a dependency to your project via [Composer](https://getcomposer.org).
 
 `composer require cointokio/coingecko-api-client`
 
@@ -16,10 +16,14 @@ Include the main `class-client.php` file and create an instance of the `Client` 
 require_once '/your/cool/path/to/coingecko-client/class-client.php';
 
 /*
- * There are two ways the Client class can use your coingecko API key:
+ * There are two ways to supply your CoinGecko API key:
  *
- * - Pass the API key to the Client class directly like in the example below.
- * - Define a global COINGECKO_API_KEY variable.
+ * - Pass the API key into the Client constructor (shown below). The client stores
+ *   this value and passes it to each request class.
+ * - Define the PHP constant COINGECKO_API_KEY. Endpoint classes extend Request,
+ *   which reads that constant when the key string passed from Client is empty—so
+ *   `new Cointokio\CoinGecko\Client()` with no arguments still works if the
+ *   constant is defined before you call any API methods.
  */
 $client = new Cointokio\CoinGecko\Client( 'your-api-key' );
 
