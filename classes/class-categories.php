@@ -38,6 +38,11 @@ class Categories extends Request {
 	 */
 	public function get_categories( $order = 'market_cap_desc' ) {
 
-		return $this->get( '/coins/categories', $order );
+		return $this->get(
+			'/coins/categories',
+			array(
+				'order' => $order,
+			)
+		);
 	}
 }
