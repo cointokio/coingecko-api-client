@@ -24,7 +24,7 @@ class Coins extends Request {
 	 *
 	 * @see https://www.coingecko.com/api/documentations/v3#/coins/get_coins_list
 	 *
-	 * @return array|WP_Error|\WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_list() {
 
@@ -40,12 +40,12 @@ class Coins extends Request {
 	 * @param array  $args {
 	 *     Optional request arguments.
 	 *
-	 *     @type string $ids                     Comma-separated list of crytocurrency symbols.
+	 *     @type string $ids                     Comma-separated list of cryptocurrency ids.
 	 *                                           @see get_coins_list().
 	 *     @type string $category                Filter by coin category.
 	 *                                           @see get_categories_list().
 	 *     @type string $order                   Sort results by field. Valid values: market_cap_desc,
-	 *                                           gecko_desc, gecko_asc, market_cap_asc, market_cap_desc,
+	 *                                           gecko_desc, gecko_asc, market_cap_asc,
 	 *                                           volume_asc, volume_desc, id_asc, id_desc.
 	 *                                           Default: market_cap_desc
 	 *     @type int    $per_page                Total results per page. Valid values: 1...250.
@@ -56,7 +56,7 @@ class Coins extends Request {
 	 *                                           30d, 200d, 1y (eg. '1h,24h,7d' comma-separated,
 	 *                                           invalid values will be discarded)
 	 * }
-	 * @return array|WP_Error|\WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_markets( string $vs_currency, array $args = [] ) {
 
@@ -87,7 +87,7 @@ class Coins extends Request {
 	 *     @type bool   $developer_data Include developer_data data.Default 'true'.
 	 *     @type bool   $sparkline      Include sparkline 7 days data. Default 'false'.
 	 * }
-	 * @return array|WP_Error|WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_coin( string $id, array $args = [] ) {
 
@@ -114,7 +114,7 @@ class Coins extends Request {
 	 *                                        (default), trust_score_asc and volume_desc.
 	 *     @type string $depth                Flag to show 2% orderbook depth. valid values: true, false
 	 * }
-	 * @return array|WP_Error|WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_tickers( string $id, array $args = [] ) {
 
@@ -133,7 +133,7 @@ class Coins extends Request {
 	 *
 	 *     @type string $localization Set to false to exclude localized languages in response.
 	 * }
-	 * @return array|WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_history( string $id, string $date, array $args = [] ) {
 
@@ -154,7 +154,7 @@ class Coins extends Request {
 	 * @param string $id          The coin id (can be obtained from /coins) eg. bitcoin.
 	 * @param string $vs_currency The target currency of market data (usd, eur, jpy, etc.).
 	 * @param string $days        Data up to number of days ago (eg. 1, 14, 30, max).
-	 * @return array|WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_market_chart( string $id, string $vs_currency, string $days ) {
 
@@ -180,7 +180,7 @@ class Coins extends Request {
 	 * @param string $vs_currency The target currency of market data (usd, eur, jpy, etc.).
 	 * @param string $from        From date in UNIX Timestamp (eg. 1392577232).
 	 * @param string $to          To date in UNIX Timestamp (eg. 1422577232).
-	 * @return array|WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_market_chart_range( string $id, string $vs_currency, string $from, string $to ) {
 
@@ -205,7 +205,7 @@ class Coins extends Request {
 	 *     @type int $per_page Total results per page.
 	 *     @type int $page     Page through results.
 	 * }
-	 * @return array|WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_status_updates( string $id, array $args = [] ) {
 
@@ -238,7 +238,7 @@ class Coins extends Request {
 	 * @param string $id          The coin id (can be obtained from /coins) eg. bitcoin.
 	 * @param string $vs_currency The target currency of market data (usd, eur, jpy, etc.).
 	 * @param string $days        Data up to number of days ago (eg. 1, 14, 30, max).
-	 * @return array|WP_Error
+	 * @return array|\WP_Error
 	 */
 	public function get_ohlc( string $id, string $vs_currency, string $days ) {
 
