@@ -91,7 +91,7 @@ class Coins extends Request {
 	 */
 	public function get_coin( string $id, array $args = [] ) {
 
-		return $this->get( '/coins/' . $id, $args );
+		return $this->get( '/coins/' . $this->encode_path_segment( $id ), $args );
 	}
 
 	/**
@@ -118,7 +118,7 @@ class Coins extends Request {
 	 */
 	public function get_tickers( string $id, array $args = [] ) {
 
-		return $this->get( '/coins/' . $id . '/tickers', $args );
+		return $this->get( '/coins/' . $this->encode_path_segment( $id ) . '/tickers', $args );
 	}
 
 	/**
@@ -139,7 +139,7 @@ class Coins extends Request {
 
 		$args['date'] = $date;
 
-		return $this->get( '/coins/' . $id . '/history', $args );
+		return $this->get( '/coins/' . $this->encode_path_segment( $id ) . '/history', $args );
 	}
 
 	/**
@@ -163,7 +163,7 @@ class Coins extends Request {
 			'days'        => $days,
 		);
 
-		return $this->get( '/coins/' . $id . '/market_chart', $args );
+		return $this->get( '/coins/' . $this->encode_path_segment( $id ) . '/market_chart', $args );
 	}
 
 	/**
@@ -190,7 +190,7 @@ class Coins extends Request {
 			'to'          => $to,
 		);
 
-		return $this->get( '/coins/' . $id . '/market_chart/range', $args );
+		return $this->get( '/coins/' . $this->encode_path_segment( $id ) . '/market_chart/range', $args );
 	}
 
 	/**
@@ -209,7 +209,7 @@ class Coins extends Request {
 	 */
 	public function get_status_updates( string $id, array $args = [] ) {
 
-		return $this->get( '/coins/' . $id . '/status_updates', $args );
+		return $this->get( '/coins/' . $this->encode_path_segment( $id ) . '/status_updates', $args );
 	}
 
 	/**
@@ -247,6 +247,6 @@ class Coins extends Request {
 			'days'        => $days,
 		);
 
-		return $this->get( '/coins/' . $id . '/ohlc', $args );
+		return $this->get( '/coins/' . $this->encode_path_segment( $id ) . '/ohlc', $args );
 	}
 }

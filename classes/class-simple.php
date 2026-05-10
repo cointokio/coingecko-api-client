@@ -68,7 +68,7 @@ class Simple extends Request {
 		$args['contract_addresses'] = $contract_addresses;
 		$args['vs_currencies']      = $vs_currencies;
 
-		return $this->get( '/simple/token_price/' . $id, $args );
+		return $this->get( '/simple/token_price/' . $this->encode_path_segment( $id ), $args );
 	}
 
 	/**

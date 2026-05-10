@@ -61,7 +61,7 @@ class Exchanges extends Request {
 	 */
 	public function get_exchange( string $id ) {
 
-		return $this->get( '/exchanges/' . $id );
+		return $this->get( '/exchanges/' . $this->encode_path_segment( $id ) );
 	}
 
 	/**
@@ -91,7 +91,7 @@ class Exchanges extends Request {
 	 */
 	public function get_tickers( string $id, array $args = [] ) {
 
-		return $this->get( '/exchanges/' . $id . '/tickers', $args );
+		return $this->get( '/exchanges/' . $this->encode_path_segment( $id ) . '/tickers', $args );
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Exchanges extends Request {
 	 */
 	public function get_status_updates( string $id, array $args = [] ) {
 
-		return $this->get( '/exchanges/' . $id . '/status_updates', $args );
+		return $this->get( '/exchanges/' . $this->encode_path_segment( $id ) . '/status_updates', $args );
 	}
 
 	/**
@@ -126,6 +126,6 @@ class Exchanges extends Request {
 
 		$args = array( 'days' => $days );
 
-		return $this->get( '/exchanges/' . $id . '/volume_chart', $args );
+		return $this->get( '/exchanges/' . $this->encode_path_segment( $id ) . '/volume_chart', $args );
 	}
 }

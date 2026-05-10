@@ -25,7 +25,9 @@ class Contract extends Request {
 	 */
 	public function get_contract( string $id, string $contract_address ) {
 
-		return $this->get( '/coins/' . $id . '/contract/' . $contract_address );
+		return $this->get(
+			'/coins/' . $this->encode_path_segment( $id ) . '/contract/' . $this->encode_path_segment( $contract_address )
+		);
 	}
 
 	/**
@@ -47,7 +49,7 @@ class Contract extends Request {
 		);
 
 		return $this->get(
-			'/coins/' . $id . '/contract/' . $contract_address . '/market_chart',
+			'/coins/' . $this->encode_path_segment( $id ) . '/contract/' . $this->encode_path_segment( $contract_address ) . '/market_chart',
 			$args
 		);
 	}
@@ -79,7 +81,7 @@ class Contract extends Request {
 		);
 
 		return $this->get(
-			'/coins/' . $id . '/contract/' . $contract_address . '/market_chart/range',
+			'/coins/' . $this->encode_path_segment( $id ) . '/contract/' . $this->encode_path_segment( $contract_address ) . '/market_chart/range',
 			$args
 		);
 	}

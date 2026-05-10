@@ -41,6 +41,17 @@ class Request {
 	}
 
 	/**
+	 * Encode a value for use as a single URL path segment.
+	 *
+	 * @param string $segment Raw path segment (coin id, exchange id, contract address, etc.).
+	 * @return string
+	 */
+	protected function encode_path_segment( string $segment ) {
+
+		return rawurlencode( $segment );
+	}
+
+	/**
 	 * Performs an HTTP request using the GET method and returns its response body as an array.
 	 *
 	 * @param string $path Path to retrieve.

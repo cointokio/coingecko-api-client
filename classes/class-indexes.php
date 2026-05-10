@@ -43,7 +43,9 @@ class Indexes extends Request {
 	 */
 	public function get_index( string $market_id, string $id ) {
 
-		return $this->get( '/indexes/' . $market_id . '/' . $id );
+		return $this->get(
+			'/indexes/' . $this->encode_path_segment( $market_id ) . '/' . $this->encode_path_segment( $id )
+		);
 	}
 
 	/**

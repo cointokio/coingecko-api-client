@@ -24,6 +24,6 @@ class Companies extends Request {
 	 */
 	public function get_public_treasury( $id ) {
 
-		return $this->get( '/companies/public_treasury/' . $id );
+		return $this->get( '/companies/public_treasury/' . $this->encode_path_segment( $id ) );
 	}
 }

@@ -71,7 +71,7 @@ class Derivatives extends Request {
 	 */
 	public function get_exchange( string $id, $args = [] ) {
 
-		return $this->get( '/derivatives/exchanges/' . $id, $args );
+		return $this->get( '/derivatives/exchanges/' . $this->encode_path_segment( $id ), $args );
 	}
 
 	/**
