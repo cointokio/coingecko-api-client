@@ -10,10 +10,29 @@ namespace Cointokio\CoinGecko;
 /**
  * The Client class exists for easier access to all individual request endpoint class methods.
  *
- * Example:
+ * The constructor takes an API key and, optionally, an API endpoint. Pro keys
+ * use the default `https://pro-api.coingecko.com/api/v3` host; demo (free)
+ * keys must be paired with `https://api.coingecko.com/api/v3`. Each accessor
+ * forwards both values to the corresponding endpoint class so the right auth
+ * header (`x-cg-pro-api-key` vs `x-cg-demo-api-key`) is picked automatically
+ * based on the configured host.
  *
- * $coingecko_client = new \Cointokio\CoinGecko\Client( 'your-api-key' );
+ * Example — pro key (default host):
+ *
+ * $coingecko_client = new \Cointokio\CoinGecko\Client( 'your-pro-api-key' );
  * $response         = $coingecko_client->coins()->get_list();
+ *
+ * Example — demo key (free host):
+ *
+ * $coingecko_client = new \Cointokio\CoinGecko\Client(
+ *     'your-demo-api-key',
+ *     'https://api.coingecko.com/api/v3'
+ * );
+ * $response         = $coingecko_client->coins()->get_list();
+ *
+ * Both values can also be supplied via the `COINGECKO_API_KEY` and
+ * `COINGECKO_API_ENDPOINT` constants, in which case `new Client()` with no
+ * arguments works.
  */
 class Client {
 
