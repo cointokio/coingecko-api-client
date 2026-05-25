@@ -18,6 +18,13 @@ namespace Cointokio\CoinGecko;
 class Client {
 
 	/**
+	 * CoinGecko API base URL.
+	 *
+	 * @var string
+	 */
+	private $endpoint = '';
+
+	/**
 	 * CoinGecko API key.
 	 *
 	 * @var string
@@ -27,10 +34,19 @@ class Client {
 	/**
 	 * Initialize Client class.
 	 *
-	 * @param string $api_key CoinGecko API key.
+	 * @param string $api_key  CoinGecko API key. As an alternative to passing
+	 *                         this parameter you can define the
+	 *                         COINGECKO_API_KEY constant.
+	 * @param string $endpoint CoinGecko API endpoint. Defaults to
+	 *                         https://pro-api.coingecko.com/api/v3. As an
+	 *                         alternative to passing this parameter you can
+	 *                         define the COINGECKO_API_ENDPOINT constant. Use
+	 *                         https://api.coingecko.com/api/v3 for demo keys.
 	 */
-	public function __construct( $api_key = '' ) {
-		$this->api_key = $api_key;
+	public function __construct( $api_key = '', $endpoint = '' ) {
+
+		$this->api_key  = $api_key;
+		$this->endpoint = $endpoint;
 
 		if ( ! class_exists( '\Cointokio\CoinGecko\Request' ) ) {
 			require_once dirname( __FILE__ ) . '/classes/class-request.php';
@@ -48,7 +64,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-assetplatforms.php';
 		}
 
-		return new AssetPlatforms( $this->api_key );
+		return new AssetPlatforms( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -62,7 +78,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-categories.php';
 		}
 
-		return new Categories( $this->api_key );
+		return new Categories( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -76,7 +92,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-coins.php';
 		}
 
-		return new Coins( $this->api_key );
+		return new Coins( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -90,7 +106,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-companies.php';
 		}
 
-		return new Companies( $this->api_key );
+		return new Companies( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -104,7 +120,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-contract.php';
 		}
 
-		return new Contract( $this->api_key );
+		return new Contract( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -118,7 +134,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-derivatives.php';
 		}
 
-		return new Derivatives( $this->api_key );
+		return new Derivatives( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -132,7 +148,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-exchanges.php';
 		}
 
-		return new Exchanges( $this->api_key );
+		return new Exchanges( $this->api_key, $this->endpoint );
 	}
 
 
@@ -147,7 +163,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-exchangerates.php';
 		}
 
-		return new ExchangeRates( $this->api_key );
+		return new ExchangeRates( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -161,7 +177,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-finance.php';
 		}
 
-		return new Finance( $this->api_key );
+		return new Finance( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -175,7 +191,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-globals.php';
 		}
 
-		return new Globals( $this->api_key );
+		return new Globals( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -189,7 +205,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-indexes.php';
 		}
 
-		return new Indexes( $this->api_key );
+		return new Indexes( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -203,7 +219,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-ping.php';
 		}
 
-		return ( new Ping( $this->api_key ) )->get_ping();
+		return ( new Ping( $this->api_key, $this->endpoint ) )->get_ping();
 	}
 
 	/**
@@ -217,7 +233,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-simple.php';
 		}
 
-		return new Simple( $this->api_key );
+		return new Simple( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -231,7 +247,7 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-statusupdates.php';
 		}
 
-		return new StatusUpdates( $this->api_key );
+		return new StatusUpdates( $this->api_key, $this->endpoint );
 	}
 
 	/**
@@ -245,6 +261,6 @@ class Client {
 			require_once dirname( __FILE__ ) . '/classes/class-trending.php';
 		}
 
-		return new Trending( $this->api_key );
+		return new Trending( $this->api_key, $this->endpoint );
 	}
 }
