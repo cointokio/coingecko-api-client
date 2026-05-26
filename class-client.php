@@ -10,23 +10,23 @@ namespace Cointokio\CoinGecko;
 /**
  * The Client class exists for easier access to all individual request endpoint class methods.
  *
- * The constructor takes an API key and, optionally, an API endpoint. Pro keys
- * use the default `https://pro-api.coingecko.com/api/v3` host; demo (free)
- * keys must be paired with `https://api.coingecko.com/api/v3`. Each accessor
- * forwards both values to the corresponding endpoint class so the right auth
- * header (`x-cg-pro-api-key` vs `x-cg-demo-api-key`) is picked automatically
- * based on the configured host.
+ * The constructor takes an API key and, optionally, an API endpoint. Callers
+ * must pair Pro keys with `https://pro-api.coingecko.com/api/v3` explicitly;
+ * demo (free) keys use the default `https://api.coingecko.com/api/v3` host.
+ * Each accessor forwards both values to the corresponding endpoint class so the
+ * correct auth header (`x-cg-pro-api-key` vs `x-cg-demo-api-key`) is picked
+ * automatically based on the configured host.
  *
- * Example — pro key (default host):
+ * Example — demo key (default host):
  *
- * $coingecko_client = new \Cointokio\CoinGecko\Client( 'your-pro-api-key' );
+ * $coingecko_client = new \Cointokio\CoinGecko\Client( 'your-demo-api-key' );
  * $response         = $coingecko_client->coins()->get_list();
  *
- * Example — demo key (free host):
+ * Example — pro key (paid host):
  *
  * $coingecko_client = new \Cointokio\CoinGecko\Client(
- *     'your-demo-api-key',
- *     'https://api.coingecko.com/api/v3'
+ *     'your-pro-api-key',
+ *     'https://pro-api.coingecko.com/api/v3'
  * );
  * $response         = $coingecko_client->coins()->get_list();
  *
@@ -57,10 +57,11 @@ class Client {
 	 *                         this parameter you can define the
 	 *                         COINGECKO_API_KEY constant.
 	 * @param string $endpoint CoinGecko API endpoint. Defaults to
-	 *                         https://pro-api.coingecko.com/api/v3. As an
-	 *                         alternative to passing this parameter you can
-	 *                         define the COINGECKO_API_ENDPOINT constant. Use
-	 *                         https://api.coingecko.com/api/v3 for demo keys.
+	 *                         https://api.coingecko.com/api/v3 (Demo). Pass
+	 *                         https://pro-api.coingecko.com/api/v3 for Pro
+	 *                         keys. As an alternative to passing this
+	 *                         parameter you can define the
+	 *                         COINGECKO_API_ENDPOINT constant.
 	 */
 	public function __construct( $api_key = '', $endpoint = '' ) {
 

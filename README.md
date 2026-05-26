@@ -21,12 +21,17 @@ There are two ways to supply your CoinGecko API key:
 
 ### API endpoint
 
-The client defaults to the paid-tier host `https://pro-api.coingecko.com/api/v3` and authenticates with the `x-cg-pro-api-key` header. If you have a [demo (free)](https://www.coingecko.com/en/api/pricing) key, point the client at `https://api.coingecko.com/api/v3` so it switches to the `x-cg-demo-api-key` header automatically:
+CoinGecko exposes two hosts so the host must be selected explicitly:
+
+- Demo (free): `https://api.coingecko.com/api/v3`, authenticated with `x-cg-demo-api-key`.
+- Pro (paid): `https://pro-api.coingecko.com/api/v3`, authenticated with `x-cg-pro-api-key`.
+
+The client defaults to the Demo host. If you have a [Pro](https://www.coingecko.com/en/api/pricing) key, point the client at the Pro host so it switches to the `x-cg-pro-api-key` header automatically:
 
 ```
 $client = new Cointokio\CoinGecko\Client(
-	'your-demo-api-key',
-	'https://api.coingecko.com/api/v3'
+	'your-pro-api-key',
+	'https://pro-api.coingecko.com/api/v3'
 );
 ```
 
@@ -34,12 +39,12 @@ As with the API key, the endpoint can also be supplied via a constant (`COINGECK
 
 The auth header is only attached when the configured host is one of the two recognised CoinGecko hosts. Pointing the client at any other host (e.g. a local mock) deliberately suppresses the key header so credentials cannot leak to a third-party server.
 
-### Example — pro key, default host
+### Example — demo key, default host
 
 ```
 require_once '/your/cool/path/to/coingecko-client/class-client.php';
 
-$client = new Cointokio\CoinGecko\Client( 'your-pro-api-key' );
+$client = new Cointokio\CoinGecko\Client( 'your-demo-api-key' );
 
 /*
  * Use the ping() method to check the CoinGecko API status.
@@ -49,14 +54,14 @@ $client = new Cointokio\CoinGecko\Client( 'your-pro-api-key' );
 $response = $client->ping();
 ```
 
-### Example — demo key, free host
+### Example — pro key, paid host
 
 ```
 require_once '/your/cool/path/to/coingecko-client/class-client.php';
 
 $client = new Cointokio\CoinGecko\Client(
-	'your-demo-api-key',
-	'https://api.coingecko.com/api/v3'
+	'your-pro-api-key',
+	'https://pro-api.coingecko.com/api/v3'
 );
 
 $response = $client->ping();
@@ -67,7 +72,7 @@ The following example uses the `$client->coins()->get_markets()` method to fetch
 ```
 require_once '/your/cool/path/to/coingecko-client/class-client.php';
 
-$client = new Cointokio\CoinGecko\Client( 'your-pro-api-key' );
+$client = new Cointokio\CoinGecko\Client( 'your-demo-api-key' );
 
 /*
  * Get a list of price, market cap, volume and market-related data.

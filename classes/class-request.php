@@ -15,14 +15,16 @@ namespace Cointokio\CoinGecko;
 class Request {
 
 	/**
-	 * CoinGecko paid-tier endpoint (default).
+	 * CoinGecko paid-tier (Pro) endpoint.
 	 *
 	 * @var string
 	 */
 	const DEFAULT_PRO_ENDPOINT = 'https://pro-api.coingecko.com/api/v3';
 
 	/**
-	 * CoinGecko demo-tier endpoint.
+	 * CoinGecko free-tier (Demo) endpoint. Used as the default because the key
+	 * string alone does not tell us whether the caller holds a Pro or a Demo
+	 * key, and the Demo host is accessible to every CoinGecko account.
 	 *
 	 * @var string
 	 */
@@ -33,7 +35,7 @@ class Request {
 	 *
 	 * @var string
 	 */
-	private $endpoint = self::DEFAULT_PRO_ENDPOINT;
+	private $endpoint = self::DEFAULT_DEMO_ENDPOINT;
 
 	/**
 	 * CoinGecko API key.
@@ -45,14 +47,19 @@ class Request {
 	/**
 	 * Constructor.
 	 *
+	 * Pro and Demo keys live on different hosts and use different auth
+	 * headers. Callers with a Pro key must pass (or define a constant for) the
+	 * Pro endpoint explicitly.
+	 *
 	 * @param string $api_key  CoinGecko API key. As an alternative to passing
 	 *                         this parameter you can define the
 	 *                         COINGECKO_API_KEY constant.
 	 * @param string $endpoint CoinGecko API endpoint. Defaults to
-	 *                         https://pro-api.coingecko.com/api/v3. As an
-	 *                         alternative to passing this parameter you can
-	 *                         define the COINGECKO_API_ENDPOINT constant. Use
-	 *                         https://api.coingecko.com/api/v3 for demo keys.
+	 *                         https://api.coingecko.com/api/v3 (Demo). Pass
+	 *                         https://pro-api.coingecko.com/api/v3 for Pro
+	 *                         keys. As an alternative to passing this
+	 *                         parameter you can define the
+	 *                         COINGECKO_API_ENDPOINT constant.
 	 */
 	public function __construct( $api_key = '', $endpoint = '' ) {
 
@@ -65,7 +72,7 @@ class Request {
 		}
 
 		if ( '' === (string) $endpoint ) {
-			$endpoint = self::DEFAULT_PRO_ENDPOINT;
+			$endpoint = self::DEFAULT_DEMO_ENDPOINT;
 		}
 
 		$this->api_key  = $api_key;
